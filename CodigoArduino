@@ -1,0 +1,23 @@
+#define SOUND_SENSOR_PIN A0
+#define LED_PIN 13
+
+
+void setup() {
+  pinMode(SOUND_SENSOR_PIN, INPUT);
+  pinMode(LED_PIN, OUTPUT);
+
+  Serial.begin(9600);  // Inicializa a comunicação serial com taxa de baudrate de 9600 bps
+}
+
+void loop() {
+  int sensorValue = analogRead(SOUND_SENSOR_PIN);
+  Serial.println(sensorValue);
+
+  if (sensorValue > 200) {
+    digitalWrite(LED_PIN, HIGH);
+  } else {
+    digitalWrite(LED_PIN, LOW);
+  }
+
+  delay(250);
+}
